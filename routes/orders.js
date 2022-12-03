@@ -9,7 +9,7 @@ const ordersController = require('../controllers/orders')
 
 app.use(allowCrossDomain)
 
-route.post('/api/orders/addOrderProduct', ordersController.addOrderProduct)
+route.get('/api/orders/addOrderProduct', ordersController.addOrderProduct)
 route.post('/api/orders/createOrders', orderValidation , ordersController.createOrder)
 route.get('/api/orders/getAllOrders', ordersController.getAllOrder)
 route.get('/api/orders/getOrderById/', ordersController.getOrderById)
