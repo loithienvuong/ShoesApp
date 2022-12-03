@@ -9,7 +9,7 @@ const cartsController = require('../controllers/carts')
 
 app.use(allowCrossDomain)
 
-route.post('/api/carts/createCarts', cartValidation, cartsController.createCart)
+route.post('/api/carts/createCart', cartValidation, cartsController.createCart)
 route.get('/api/carts/getAllCarts', cartsController.getAllCart)
 route.get('/api/carts/getCartById/', cartsController.getCartById)
 route.delete('/api/carts/deleteCartById/', cartsController.deleteCartById)

@@ -2,14 +2,16 @@ const Carts = require('../models/carts')
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 const errorFunction = require('../utils/errorFunction')
+const Products = require('../models/products');
+const Users = require('../models/users');
 
 
 const createCart = async (req, res, next) => {
-    const cartId = await Carts.findById(req.body.cartId)
+    const productId = await Products.findById(req.body.productId)
     const userId = await Users.findById(req.body.userId)
-    if (!cartId) {
+    if (!productId) {
       return res.json(
-        errorFunction(true, 204, 'This cart Id have not in the database'),
+        errorFunction(true, 204, 'This product Id have not in the database'),
       )
     }
     if (!userId) {
@@ -21,7 +23,8 @@ const createCart = async (req, res, next) => {
         const cart = await Carts(req.body)
         cart.save().then((response) => {
             res.json({
-                message: 'Added cart successfully!', order
+                message: 'Added cart successfully!',
+                cart,
             })
         })
     } catch (error) {
@@ -102,7 +105,7 @@ const editCart = (req, res, next) => {
                 })
             } else {
                 res.json({
-                    statusCode: 204,
+statusCode: 204,
                     message: 'This cart Id have not in the database ',
                 })
             }
@@ -133,6 +136,7 @@ const deleteCartById = async (req, res, next) => {
             })
         }
     } catch (error) {
+        
         console.log('error', error)
         res.status(400).json({
             statusCode: 400,

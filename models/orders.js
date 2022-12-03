@@ -26,7 +26,7 @@ const OrdersSchema = new Schema(
         },
         type: {
             type: String,
-            require: false,
+            require: true,
         },
         image: {
             type: String,

@@ -4,7 +4,7 @@ const Users = require('../models/users')
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs')
 const errorFunction = require('../utils/errorFunction');
-const orderValidation = require('../helpers/orderValidation');
+// const orderValidation = require('../helpers/orderValidation');
 
 
 //CREATE
@@ -51,7 +51,7 @@ const addOrderProduct = async (req, res, next) => {
             errorFunction(true, 204, 'This user Id have not in the database'),
           )
         }
-        if (!product) {
+        else if (!product) {
             return res.json(
               errorFunction(true, 204, 'This product Id have not in the database'),
             )
@@ -79,7 +79,7 @@ const addOrderProduct = async (req, res, next) => {
                 } 
             } else {
                 // Show message
-                return res.json(errorFunction(true, 206, 'The quantity is greater than quantity in the stock'),)
+                return res.json(errorFunction(true, 206, 'The quantity is greater than quantity in the stock'))
             }
         }
 
